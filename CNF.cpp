@@ -6,16 +6,14 @@ void sort_edge(pair<int,int> e){
 }
 
 int main(){
-    pair<int,int> egde;     // edge between two vertices
-    vector<pair<int,int>> edges;   // vector of edges
-    map<pair<int,int>,int> to_which_subgraph; // map to which subgraph the edge belongs to which subgraph
+    map<pair<int,int>,int> edges; // map which can help to check which edges are present in the original graph
     int N,E,K1,K2;
     cin>>N>>E>>K1>>K2;
     for(int i=0;i<E;i++){
+        pair<int,int> egde;
         cin>>egde.first>>egde.second;
         sort_edge(egde);
-        edges.push_back(egde);
-        to_which_subgraph[egde] = 1;
+        edges[egde] = 1;  // initially assuming all edges are mappend in G1
     }
     cout << "c" << "comment" << endl;
     vector<vector<int>> clauses;
@@ -26,6 +24,20 @@ int main(){
         cnf.push_back(i+N);
         clauses.push_back(cnf);
     }
+    //constraint 2: if edges is not present in the original graph then that this vertices cannot be present in the same subgraph
+    for(int i=1;i<=N;i++){
+        for(int j=i+1;j<=N;j++){
+            int new_edge = make_pair(i,j);
+            if(edges.find(new_edge)==edges.end()){
+                vector<int> cnf;
+                cnf.push_back(-i);
+                cnf.push_back(-(j));
+                clauses.push_back(cnf);  
+                cnf.clear();
+                cnf.push_back((i+N));
+                cnf.push_back((j+N));
+            }
+        }
+    }
     
-
 }
