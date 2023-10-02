@@ -30,15 +30,12 @@ int main(){
             int new_edge = make_pair(i,j);
             if(edges.find(new_edge)==edges.end()){
                 vector<int> cnf;
-                cnf.push_back(-i);
+                cnf.push_back(-(i));
                 cnf.push_back(-(j));
-                clauses.push_back(cnf);  
-                cnf.clear();
-                cnf.push_back((i+N));
-                cnf.push_back((j+N));
                 clauses.push_back(cnf);
             }
         }
     }
+    //constraint 3 : size of G1 is K1 and size of G2 is K2
     
 }
