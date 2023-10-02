@@ -36,6 +36,7 @@ int main(){
                 cnf.clear();
                 cnf.push_back((i+N));
                 cnf.push_back((j+N));
+                clauses.push_back(cnf);
             }
         }
     }
