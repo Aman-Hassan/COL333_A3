@@ -30,16 +30,13 @@ int main(){
             int new_edge = make_pair(i,j);
             if(edges.find(new_edge)==edges.end()){
                 vector<int> cnf;
-                cnf.push_back(-(i));
+                cnf.push_back(-(i));   // i and j are present in different subgraphs
                 cnf.push_back(-(j));
                 clauses.push_back(cnf);  
-                cnf.clear();
-                cnf.push_back((i+N));   
-                cnf.push_back((j+N));    
-                clauses.push_back(cnf);
+                
             }
         }
     }
     //constraint 3 : ensuring the size of subgraphs as K1 and K2 
-
+    
 }
