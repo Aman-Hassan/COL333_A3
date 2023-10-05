@@ -33,7 +33,10 @@ int main(){
                 cnf.push_back(-(i));   // i and j are present in different subgraphs
                 cnf.push_back(-(j));
                 clauses.push_back(cnf);  
-                
+                clauses.clear();
+                clauses.push_back(i+N);
+                clauses.push_back(j+N);
+                cnf.push_back(clauses);
             }
         }
     }
