@@ -33,6 +33,10 @@ int main(){
                 cnf.push_back(-(i));
                 cnf.push_back(-(j));
                 clauses.push_back(cnf);  
+                cnf.clear();
+                cnf.push_back((i+N));   
+                cnf.push_back((j+N));    
+                clauses.push_back(cnf);
             }
         }
     }
