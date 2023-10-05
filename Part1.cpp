@@ -150,9 +150,46 @@ int main(){
     cnf.push_back(r);
     r.clear();
     // same for K2 also 
-
-
-
+    r.push_back(1+N);
+    r.push_back(M[1+N][1+N]);
+    cnf.push_back(r);   
+    r.clear();
+    for(j=2;j<=K2;j++){
+        r.push_back(-(M[1+N][j]));
+        cnf.push_back(r);
+        r.clear();
+    } 
+    for(int i=2;i<N;i++){
+        r.push_back(-(i+N));
+        r.push_back(M[i+N][1+N]);
+        cnf.push_back(r);
+        r.clear();
+        r.push_back(-(M[i-1+N][1+N]));
+        r.push_back((M[i+N][1+N]));
+        cnf.push_back(r);
+        r.clear();
+        r.push_back(-(i+N));
+        r.push_back(-(M[i-1+N][K2]));
+        cnf.push_back(r);
+        r.clear();
+    }
+    for(int i=2;i<N;i++){
+        for(int j=2;j<=K2;j++){
+            r.push_back(-(i+N));
+            r.push_back(-M[i-1+N][j-1]);
+            r.push_back(M[i+N][j]);
+            cnf.push_back(r);
+            r.clear();
+            r.push_back(-M[i-1+N][j]);
+            r.push_back(M[i+N][j]);
+            cnf.push_back(r);
+            r.clear();
+        }
+    }
+    r.push_back(-(2*N));
+    r.push_back(-(M[2*N-1][K2]));
+    cnf.push_back(r);
+    r.clear();
     cout << "p cnf " << 2*N + N*K1 + N*K2 << " " << cnf.size() << endl;
     for (const vector<int>& it : cnf) {
         for (int v : it) {
