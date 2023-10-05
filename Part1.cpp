@@ -31,7 +31,7 @@ int main(){
             if(edges.find(new_edge)==edges.end()){
                 vector<int> clauses;
                 clauses.push_back(-(i));   // i and j are present in different subgraphs
-                clauses.push_back(-(j));   
+                clauses.push_back(-(j));    
                 cnf.push_back(clauses);  
                 clauses.clear();
                 clauses.push_back(i+N);
@@ -44,7 +44,7 @@ int main(){
     // for G1 graph
     vector<vector<bool>> S;   //making a counter Sij hat represent that at least j of the variables x1,x2,x3...xi are assigned to true.
     for(int i=0;i<=N;i++){
-        S[i][0] = 1;         // when subgraph of size 0 is selected form graph having 0...N vertices
+        S[i][0] = 1;         // when subgraph G1 of size 0 is selected form graph having 0...N vertices
     }
     for(int j=1;j<=K1;j++){
        S[0][j] = 0;        //when G has size 0 , then no subgraph is possible
@@ -102,7 +102,8 @@ int main(){
              cnf.push_back(clauses);
         }
     }
-    cout << "p cnf " << 2*N << " " << cnf.size() << endl;
+
+    cout << "p cnf " << 2*N + N*K1 + N*K2 << " " << cnf.size() << endl;
     for (const vector<int>& it : cnf) {
         for (int v : it) {
             cout << v << " ";
