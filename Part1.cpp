@@ -34,7 +34,7 @@ int main(){
         }
     }
     //constraint 3 : ensuring the size of subgraphs as K1 and K2 
-    // for G1 graph   at most condition
+    // for G1 graph   at most condition K1
     int offset1 = N*K1;
     cout << -1 << " " << 1 + 1*N + offset1 << " " << 0 << endl;
     for(int j=2;j<=K1;j++){
@@ -59,7 +59,15 @@ int main(){
     for(int i=2;i<=N;i++){
         cout << -i << " " << -(i-1 + K1*N + offset1) << " " << 0 << endl;
     }
-    
-
+   // at least K1 is true  
+   for(int i=1;i<=N;i++){
+    for(int j=1;j<=K1;j++){
+      cout << -(i+j*N+offset1) << " "  << (i-1 + j*N + offset1) << " " << i << " " << 0 << endl;
+      cout << -(i+j*N+offset1) << " "  << (i-1 + j*N + offset1) << " " << (i-1 +(j-1)*N + offset1) << " " << 0 << endl;
+      cout << -(i-1+j*N+offset1) << " "  << (i + j*N + offset1) << " " << 0 << endl;
+      cout << -i << " " << -(i-1 + (j-1)*N + offset1) << " " << (i+j*N+offset1) << " " << 0 << endl;
+    }   
+   }
+  
 
 }
