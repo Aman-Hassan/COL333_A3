@@ -42,7 +42,7 @@ int main(){
     }
     for(int i=1;i<=N;i++){
        cout << -i << " " << i + 1*N + offset1 << " " << 0 << endl;
-    }
+    } 
     for(int i=2;i<=N;i++){
           cout << -(i-1 + 1*N + offset1) << " " << i + 1*N + offset1 << " " << 0 << endl;
     }
@@ -60,14 +60,23 @@ int main(){
         cout << -i << " " << -(i-1 + K1*N + offset1) << " " << 0 << endl;
     }
    // at least K1 is true  
-   for(int i=2;i<=N;i++){
-    for(int j=2;j<=K1;j++){
-      cout << -(i+j*N+offset1) << " "  << (i-1 + j*N + offset1) << " " << i << " " << 0 << endl;
-      cout << -(i+j*N+offset1) << " "  << (i-1 + j*N + offset1) << " " << (i-1 +(j-1)*N + offset1) << " " << 0 << endl;
-      cout << -(i-1+j*N+offset1) << " "  << (i + j*N + offset1) << " " << 0 << endl;
-      cout << -i << " " << -(i-1 + (j-1)*N + offset1) << " " << (i+j*N+offset1) << " " << 0 << endl;
-    }   
-   }
+    for(int i=2;i<=N;i++){
+        for(int j=1;j<=N-K1;j++){
+           cout << i << " " << -(i-1 + (j-1)*N + offset1) << " " << i + j*N + offset1 << " " << 0 << endl;
+        }
+    }
+    if(K1 < N - K1){
+         for(int j=K1+1;j<N-K1;j++){
+        cout << - (1 + j*N + offset1 ) << " " << 0 << endl; 
+    }
+    }
+     for(int i=1;i<=N;i++){
+       cout << i << " " << i + 1*N + offset1 << " " << 0 << endl;
+    } 
+     for(int i=2;i<=N;i++){
+        cout << i << " " << -(i-1 + K1*N + offset1) << " " << 0 << endl;
+    }
+    //at most K2 is true
    int offset2 = N*K2;  
     // for G2 graph   at most condition K2  
     // implemented si,j = i+ N +j*N+offset2
@@ -93,15 +102,21 @@ int main(){
      for(int i=2;i<=N;i++){
           cout << -(i +N) << " " << -(i-1 + N + K2*N + offset2) << " " << 0 << endl;
      }
-        // at least K2 is true  
-        for(int i=1;i<=N;i++){
-            for(int j=1;j<=K2;j++){
-                cout << -(i+N +j*N+offset2) << " "  << (i-1 + N + j*N + offset2) << " " << i +N << " " << 0 << endl;
-                cout << -(i + N +j*N+offset2) << " "  << (i-1 + N + j*N + offset2) << " " << (i-1 + N +(j-1)*N + offset2) << " " << 0 << endl;
-                cout << -(i-1 + N +j*N+offset2) << " "  << (i + N + j*N + offset2) << " " << 0 << endl;
-                cout << -(i +N) << " " << -(i-1 + N + (j-1)*N + offset2) << " " << (i + N + j*N+offset2) << " " << 0 << endl;
-            }   
+    // at least K2 is true  
+    for(int i=2;i<N;i++){
+        for(int j=1;j<=N-K2;j++){
+           cout << i+N << " " << -(i-1 + N + (j-1)*N + offset2) << " " << i + N + j*N + offset2 << " " << 0 << endl;
         }
-
-
+    }
+    if(K2 < N - K2){
+         for(int j=K2+1;j<N-K2;j++){
+        cout << - (1+N + j*N + offset2 ) << " " << 0 << endl; 
+    }
+    }
+     for(int i=1;i<N;i++){
+         cout << i+N << " " << (i+N) + 1*N + offset2 << " " << 0 << endl;
+     }
+     for(int i=2;i<N;i++){
+          cout << i+N << " " << -(i-1 + N + K2*N + offset2) << " " << 0 << endl;
+     }
 }
