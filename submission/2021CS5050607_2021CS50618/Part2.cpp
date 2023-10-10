@@ -101,7 +101,7 @@ int main(int argc, char *argv[]){
         minisat_input_file.close();
 
         // Run minisat on the output file
-        std::string minisat_command = "minisat " + minisat_input + " " + minisat_output_temp;
+        std::string minisat_command = "./minisat " + minisat_input + " " + minisat_output_temp;
         system(minisat_command.c_str()); //._c_str to convert into const char* type that system() requires
         
         std::ifstream minisat_temp_file(minisat_output_temp);

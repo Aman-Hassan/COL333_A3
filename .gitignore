@@ -33,3 +33,8 @@
 
 # VS-code Workspaces
 *.code-workspace
+
+*.graph
+*.satinput
+*.satoutput
+*.mapping

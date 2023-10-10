@@ -1,7 +1,6 @@
 import sys
 import os
 import networkx as nx
-
 def is_complete_subgraph(graph, subgraph):
     num_vertices = len(subgraph)
     expected_num_edges = num_vertices * (num_vertices - 1) // 2  # Formula for complete graph
@@ -32,10 +31,7 @@ def is_largest_complete_subgraph(graph, subgraph):
     
     return sorted(subgraph) == sorted(all_complete_subgraphs[largest_index])
 
-
-
-def checker_problem2(graph_file, outfile):	
-	
+def checker_problem2(graph_file, outfile):		
 	fp = open(outfile,"r")
 	lines = fp.readlines()
 	num_lines = len(lines)
@@ -88,8 +84,6 @@ def checker_problem2(graph_file, outfile):
 					print("The given subgraph is the largest complete subgraph.")
 			else:
 					print("The given subgraph is not the largest complete subgraph.")
-
-	
 def is_subgraph(G,tempG,s):
 	n = len(s)
 	for i in range(n):
