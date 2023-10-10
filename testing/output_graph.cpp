@@ -46,10 +46,10 @@ int main(int argc, char *argv[]){
             continue;
         }
         k1 += 1;
-        if (k1 != 1){
-            output_file << " ";
-        }
         if (k1 <= K1){
+            if (k1 != 1){
+                output_file << " ";
+            }
             output_file << atoi(k1_literal.c_str());
         }
     }
@@ -67,10 +67,10 @@ int main(int argc, char *argv[]){
             continue;
         }
         k2+=1;
-        if (k2 != 1){
-            output_file << " ";
-        }
         if (k2 <= K2){
+            if (k2 != 1){
+                output_file << " ";
+            }
             output_file << atoi(k2_literal.c_str()) - N;
         }
     }
